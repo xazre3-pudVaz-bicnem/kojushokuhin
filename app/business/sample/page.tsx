@@ -5,11 +5,11 @@ import SectionHeading from '@/components/ui/SectionHeading'
 import CTASection from '@/components/ui/CTASection'
 import ProcessSteps from '@/components/ui/ProcessSteps'
 import Reveal from '@/components/ui/Reveal'
-import Placeholder from '@/components/ui/Placeholder'
+import Media from '@/components/ui/Media'
 import { pageMeta } from '@/lib/seo'
 
 export const metadata: Metadata = pageMeta({
-  title: 'サンプル製麺｜麺の試作・オリジナル麺開発のご相談',
+  title: 'サンプル製麺｜飲食店向けオリジナル麺の試作相談',
   description:
     '「こういう麺を作りたい」という段階から相談できるサンプル製麺。新メニュー開発や既存メニューの改善に合わせて、スープや具材に合った麺を試作します。東京・板橋区の製麺所 有限会社幸住食品。',
   path: '/business/sample',
@@ -36,7 +36,7 @@ export default function SamplePage() {
       <section className="py-18 md:py-24">
         <div className="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <Reveal className="lg:col-span-6 order-2 lg:order-1">
-            <Placeholder label="試作した麺・打ち合わせの様子" ratio="5 / 4" />
+            <Media src="noodles-crate-fill.webp" alt="試作のために製麺した麺" ratio="5 / 4" />
           </Reveal>
           <Reveal className="lg:col-span-6 order-1 lg:order-2" delay={100}>
             <SectionHeading en="About" title="レシピが決まっていなくても相談できます" />

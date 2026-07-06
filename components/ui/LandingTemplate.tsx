@@ -3,7 +3,7 @@ import PageHero from '@/components/ui/PageHero'
 import SectionHeading from '@/components/ui/SectionHeading'
 import CTASection from '@/components/ui/CTASection'
 import Reveal from '@/components/ui/Reveal'
-import Placeholder from '@/components/ui/Placeholder'
+import Media from '@/components/ui/Media'
 import FaqList from '@/components/ui/FaqList'
 import { faqSchema } from '@/lib/seo'
 import type { Faq } from '@/components/ui/FaqList'
@@ -14,6 +14,8 @@ export type LandingContent = {
   lead: string
   breadcrumbLabel: string
   imageLabel: string
+  /** /images/opt 配下のファイル名。未指定時は既定の麺写真 */
+  image?: string
   intro: string[]
   sections: { heading: string; body: string[] }[]
   points: { title: string; body: string }[]
@@ -43,7 +45,11 @@ export default function LandingTemplate({ content }: { content: LandingContent }
       <section className="py-18 md:py-24">
         <div className="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <Reveal className="lg:col-span-6 order-2 lg:order-1">
-            <Placeholder label={content.imageLabel} ratio="5 / 4" />
+            <Media
+              src={content.image ?? 'noodles-crate-wave.webp'}
+              alt={content.imageLabel}
+              ratio="5 / 4"
+            />
           </Reveal>
           <Reveal className="lg:col-span-6 order-1 lg:order-2" delay={100}>
             <div className="space-y-4 text-sm md:text-base leading-loose text-ink-700">

@@ -4,12 +4,12 @@ import PageHero from '@/components/ui/PageHero'
 import SectionHeading from '@/components/ui/SectionHeading'
 import CTASection from '@/components/ui/CTASection'
 import Reveal from '@/components/ui/Reveal'
-import Placeholder from '@/components/ui/Placeholder'
+import Media from '@/components/ui/Media'
 import { PRODUCTS } from '@/lib/constants'
 import { pageMeta } from '@/lib/seo'
 
 export const metadata: Metadata = pageMeta({
-  title: '麺の種類｜ラーメン・焼きそば・あげめんの業務用麺',
+  title: '麺の種類｜ラーメン・焼きそば・あげめん',
   description:
     'ラーメン・焼きそば・あげめんを中心に、用途に応じた業務用麺を製造。餃子・しゅうまいなど中華食品・関連商品のご相談も承ります。東京・板橋区の製麺所 有限会社幸住食品。',
   path: '/business/products',
@@ -36,8 +36,16 @@ export default function ProductsPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {noodles.map((p, i) => (
               <Reveal key={p.slug} delay={(i % 3) * 80}>
-                <Link href={p.href} className="group flex flex-col h-full border border-paper-300 bg-paper-50 overflow-hidden hover:border-navy-600 hover:shadow-[0_8px_30px_rgba(20,27,49,0.08)] transition-all duration-300">
-                  <Placeholder label={`${p.short}用麺のイメージ`} ratio="4 / 3" />
+                <Link href={p.href} className="group flex flex-col h-full border border-paper-300 bg-paper-50 overflow-hidden hover:border-navy-600 hover:shadow-[0_8px_30px_rgba(18,51,32,0.1)] transition-all duration-300">
+                  <div className="overflow-hidden">
+                    <Media
+                      src={p.image}
+                      alt={`${p.short}用の業務用麺のイメージ`}
+                      fallbackLabel={p.short}
+                      ratio="4 / 3"
+                      className="transition-transform duration-500 group-hover:scale-[1.04]"
+                    />
+                  </div>
                   <div className="p-6 flex flex-col flex-1">
                     <h3 className="font-heading text-lg text-navy-800 group-hover:text-enji-600 transition-colors">
                       {p.short}
@@ -71,7 +79,7 @@ export default function ProductsPage() {
               <Reveal key={p.slug} delay={(i % 2) * 80}>
                 <Link href={p.href} className="group flex gap-5 border border-paper-300 bg-paper-50 p-6 hover:border-navy-600 transition-colors h-full">
                   <div className="w-28 shrink-0 overflow-hidden border border-paper-300">
-                    <Placeholder label={p.short} ratio="1 / 1" />
+                    <Media src={p.image} alt={`${p.short}のイメージ`} fallbackLabel={p.short} ratio="1 / 1" />
                   </div>
                   <div>
                     <h3 className="font-heading text-lg text-navy-800 group-hover:text-enji-600 transition-colors">

@@ -45,7 +45,7 @@ export default function PhoneBlock({ tone = 'light', className = '' }: Props) {
         {PHONE_NOTE}
       </p>
       <p className={`mt-1 text-xs ${isDark ? 'text-paper-300/70' : 'text-ink-500'}`}>
-        営業時間 {COMPANY.hours}（定休日：{COMPANY.holiday}）
+        営業時間 {COMPANY.hours}
       </p>
     </div>
   )

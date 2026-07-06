@@ -4,11 +4,11 @@ import SectionHeading from '@/components/ui/SectionHeading'
 import CompanyInfo from '@/components/ui/CompanyInfo'
 import CTASection from '@/components/ui/CTASection'
 import Reveal from '@/components/ui/Reveal'
-import Placeholder from '@/components/ui/Placeholder'
+import Media from '@/components/ui/Media'
 import { pageMeta } from '@/lib/seo'
 
 export const metadata: Metadata = pageMeta({
-  title: '会社案内',
+  title: '会社案内｜東京・板橋区赤塚の製麺所',
   description:
     '東京・板橋区赤塚の製麺所「有限会社幸住食品」の会社案内。業務用麺の製造、オリジナル麺の開発、サンプル製麺、テストキッチンの貸出を行う製麺所の概要・所在地・アクセスをご案内します。',
   path: '/company',
@@ -49,7 +49,7 @@ export default function CompanyPage() {
             </div>
           </Reveal>
           <Reveal className="lg:col-span-6" delay={100}>
-            <Placeholder label="製麺所内観／職人の手仕事の写真" ratio="5 / 4" />
+            <Media src="noodles-crate-wave.webp" alt="木箱に整然と並べられた、製麺したての麺" ratio="5 / 4" />
           </Reveal>
         </div>
       </section>

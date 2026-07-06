@@ -12,7 +12,8 @@ export const PHONE_NOTE = 'ホームページを見たとお伝えいただけ�
 export const COMPANY = {
   name: '有限会社幸住食品',
   nameKana: 'ゆうげんがいしゃ こうじゅうしょくひん',
-  representative: '竹田 吉住',
+  /** ユーザー提供は担当者名（代表者としては未確認のため「担当者」として表示） */
+  contactPerson: '竹田 吉住',
   postalCode: '175-0092',
   address: '東京都板橋区赤塚5-28-1',
   addressRegion: '東京都',
@@ -20,8 +21,7 @@ export const COMPANY = {
   streetAddress: '赤塚5-28-1',
   phone: PHONE,
   hours: '9:00〜17:00',
-  holiday: '土・日・祝',
-  business: '製麺所／業務用麺の製造・オリジナル麺開発・サンプル製麺・テストキッチン貸出',
+  business: '製麺所／業務用麺の製造／オリジナル麺開発／サンプル製麺／テストキッチン貸出',
   /** 板橋区赤塚5-28-1 のおおよその座標（差し替え可） */
   lat: 35.7876,
   lng: 139.6392,
@@ -54,6 +54,8 @@ export const NAV_ITEMS = [
       { label: 'しゅうまい', href: '/business/products/shumai' },
     ],
   },
+  { label: 'サンプル製麺', href: '/business/sample' },
+  { label: 'テストキッチン', href: '/business/test-kitchen' },
   { label: 'お問い合わせ', href: '/contact' },
 ] as const
 
@@ -66,7 +68,7 @@ export const PRODUCTS = [
     href: '/business/products/ramen',
     category: 'noodle',
     lead: 'スープの種類や提供スタイルに合わせて、細麺から太麺、ちぢれ・ストレートまで幅広く製造します。',
-    image: '/images/products/ramen.jpg',
+    image: 'noodles-close-b.webp',
   },
   {
     slug: 'yakisoba',
@@ -75,7 +77,7 @@ export const PRODUCTS = [
     href: '/business/products/yakisoba',
     category: 'noodle',
     lead: '鉄板・中華鍋での調理を想定し、ほぐれやすさやソースの絡みを考えた蒸し麺・生麺に対応します。',
-    image: '/images/products/yakisoba.jpg',
+    image: 'noodles-crate-fill.webp',
   },
   {
     slug: 'agemen',
@@ -84,7 +86,7 @@ export const PRODUCTS = [
     href: '/business/products/agemen',
     category: 'noodle',
     lead: '揚げ調理を前提とした、食感と油切れにこだわった麺。おつまみ・スナック・トッピング用途に。',
-    image: '/images/products/agemen.jpg',
+    image: 'noodles-close-a.webp',
   },
   {
     slug: 'gyoza',
@@ -93,7 +95,7 @@ export const PRODUCTS = [
     href: '/business/products/gyoza',
     category: 'related',
     lead: '皮をはじめとした中華食品・関連商品についても、用途に応じてご相談を承ります。',
-    image: '/images/products/gyoza.jpg',
+    image: undefined,
   },
   {
     slug: 'shumai',
@@ -102,7 +104,7 @@ export const PRODUCTS = [
     href: '/business/products/shumai',
     category: 'related',
     lead: '中華食品・惣菜まわりの商品づくりについて、麺以外の関連商品もあわせてご相談ください。',
-    image: '/images/products/shumai.jpg',
+    image: undefined,
   },
 ] as const
 
@@ -112,26 +114,31 @@ export const BUSINESS_CARDS = [
     title: '麺へのこだわり',
     href: '/business/quality',
     lead: '用途・スープ・調理方法に合わせて、太さ・食感・加水率・ゆで時間を調整。飲食店のメニュー開発を支える麺づくりです。',
+    image: 'noodles-close-c.webp',
   },
   {
     title: '麺の種類',
     href: '/business/products',
     lead: 'ラーメン・焼きそば・あげめんなど、用途に応じた業務用麺を製造。中華食品・関連商品のご相談も承ります。',
+    image: 'noodles-crate-fill.webp',
   },
   {
     title: 'サンプル製麺',
     href: '/business/sample',
     lead: '「こういう麺を作りたい」という段階から試作に対応。既存メニューの改善やスープに合わせた調整もご相談いただけます。',
+    image: 'noodles-close-a.webp',
   },
   {
     title: 'テストキッチン',
     href: '/business/test-kitchen',
     lead: '製麺所の横にOPEN予定のラーメン店を活用し、製麺した麺を実際に調理・試食・検証できる場としてご利用いただけます。',
+    image: 'noodles-crate-wave.webp',
   },
   {
     title: '業務用取引のご相談',
     href: '/business-noodles',
     lead: '飲食店・ラーメン店・中華料理店・惣菜店・食品メーカーへ、業務用麺を安定して供給する体制を整えています。',
+    image: 'noodles-crate-straight.webp',
   },
 ] as const
 

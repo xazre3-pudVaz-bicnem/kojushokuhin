@@ -31,7 +31,7 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: '東京 製麺所｜業務用麺の製造・オリジナル麺開発｜有限会社幸住食品（板橋区）',
+    default: '東京 製麺所｜業務用麺の製造・オリジナル麺開発｜有限会社幸住食品',
     template: `%s｜${SITE_NAME}`,
   },
   description:

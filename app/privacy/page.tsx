@@ -45,7 +45,7 @@ const SECTIONS: { heading: string; body: React.ReactNode }[] = [
         <a href={PHONE_TEL} className="text-enji-600 hover:text-enji-700 transition-colors">
           {PHONE}
         </a>
-        （営業時間 {COMPANY.hours}／定休日 {COMPANY.holiday}）
+        （営業時間 {COMPANY.hours}）
       </>
     ),
   },

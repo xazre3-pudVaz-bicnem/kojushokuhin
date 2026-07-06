@@ -4,7 +4,7 @@ import PageHero from '@/components/ui/PageHero'
 import SectionHeading from '@/components/ui/SectionHeading'
 import CTASection from '@/components/ui/CTASection'
 import Reveal from '@/components/ui/Reveal'
-import Placeholder from '@/components/ui/Placeholder'
+import Media from '@/components/ui/Media'
 import { pageMeta } from '@/lib/seo'
 
 export const metadata: Metadata = pageMeta({
@@ -85,7 +85,7 @@ export default function QualityPage() {
       <section className="py-18 md:py-24">
         <div className="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-12 items-center">
           <Reveal className="lg:col-span-6">
-            <Placeholder label="麺の太さ・食感の違いが分かる写真" ratio="5 / 4" />
+            <Media src="noodles-close-b.webp" alt="太さや食感の異なる、製麺したての中華麺" ratio="5 / 4" />
           </Reveal>
           <Reveal className="lg:col-span-6" delay={100}>
             <SectionHeading en="Spec" title="ご相談いただける主な要素" />

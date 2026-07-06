@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import Reveal from '@/components/ui/Reveal'
 import SectionHeading from '@/components/ui/SectionHeading'
 import LinkCard from '@/components/ui/LinkCard'
@@ -6,8 +7,8 @@ import CTASection from '@/components/ui/CTASection'
 import CompanyInfo from '@/components/ui/CompanyInfo'
 import PhoneBlock from '@/components/ui/PhoneBlock'
 import FaqList from '@/components/ui/FaqList'
-import Placeholder from '@/components/ui/Placeholder'
-import { BUSINESS_CARDS, PRODUCTS, REASONS, FAQS } from '@/lib/constants'
+import Media from '@/components/ui/Media'
+import { BUSINESS_CARDS, PRODUCTS, REASONS, FAQS, COMPANY } from '@/lib/constants'
 import { faqSchema } from '@/lib/seo'
 
 export default function Home() {
@@ -18,51 +19,64 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(FAQS)) }}
       />
 
-      {/* 1. Hero */}
+      {/* 1. Hero — CTAボタンなし（ロゴ・キャッチ・写真・営業情報） */}
       <section className="relative overflow-hidden bg-navy-900 text-paper-50">
-        <div className="absolute inset-0 bg-grid opacity-30" aria-hidden />
-        <div
-          className="absolute inset-0 opacity-[0.06]"
-          aria-hidden
-          style={{ backgroundImage: 'repeating-linear-gradient(115deg, #ffffff 0 1px, transparent 1px 9px)' }}
-        />
-        <div className="relative max-w-7xl mx-auto px-5 lg:px-8 pt-32 pb-20 md:pt-40 md:pb-28 grid lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7">
-            <span className="font-en block text-sm tracking-[0.3em] uppercase text-wheat-300 mb-5">
-              Noodle Factory in Tokyo
-            </span>
-            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl leading-[1.3] tracking-wide">
+        <div className="absolute inset-0 bg-grid opacity-25" aria-hidden />
+        <div className="relative max-w-7xl mx-auto px-5 lg:px-8 pt-28 pb-16 md:pt-36 md:pb-24 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div className="lg:col-span-6">
+            <div className="flex items-center gap-3 mb-7">
+              <span className="inline-flex items-center justify-center w-14 h-14 bg-paper-50 rounded-full p-2 shrink-0">
+                <Image
+                  src="/images/opt/logo.webp"
+                  alt="有限会社幸住食品 ロゴ"
+                  width={72}
+                  height={66}
+                  priority
+                  className="w-full h-auto"
+                />
+              </span>
+              <span className="text-sm tracking-[0.2em] text-wheat-300">有限会社幸住食品</span>
+            </div>
+            <h1 className="font-heading text-[1.75rem] leading-[1.35] md:text-4xl lg:text-[2.65rem] lg:leading-[1.32] tracking-wide">
               東京・板橋区で
               <br />
               業務用麺の製造なら
               <br />
               <span className="text-wheat-300">有限会社幸住食品</span>
             </h1>
-            <p className="mt-7 text-sm md:text-base leading-loose text-paper-200/90 max-w-xl">
+            <p className="mt-6 text-sm md:text-base leading-loose text-paper-200/90 max-w-xl">
               ラーメン、焼きそば、あげめんなど、用途や調理方法に合わせた麺づくりに対応。
-              サンプル製麺やテストキッチンでの試作相談も承ります。飲食店・食品事業者の
-              「理想の麺づくり」を支える製麺所です。
+              サンプル製麺やテストキッチンでの試作相談も承ります。
             </p>
-            <div className="mt-9 flex flex-col sm:flex-row gap-3">
-              <Link
-                href="/business"
-                className="inline-flex items-center justify-center gap-2 bg-enji-500 text-paper-50 px-8 py-4 text-sm tracking-wider hover:bg-enji-600 transition-colors"
-              >
-                事業紹介を見る
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center border border-paper-300/40 text-paper-100 px-8 py-4 text-sm tracking-wider hover:bg-paper-50/10 transition-colors"
-              >
-                麺づくりを相談する
-              </Link>
-            </div>
+
+            {/* 簡潔な営業情報（ボタン型CTAなし） */}
+            <dl className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm">
+              <div className="flex items-center gap-2">
+                <dt className="text-wheat-300">所在地</dt>
+                <dd className="text-paper-100">{COMPANY.addressLocality}・赤塚</dd>
+              </div>
+              <div className="flex items-center gap-2">
+                <dt className="text-wheat-300">営業時間</dt>
+                <dd className="text-paper-100">{COMPANY.hours}</dd>
+              </div>
+              <div className="flex items-center gap-2">
+                <dt className="text-wheat-300">対応</dt>
+                <dd className="text-paper-100">業務用麺・オリジナル麺・試作相談</dd>
+              </div>
+            </dl>
           </div>
-          <div className="lg:col-span-5">
-            <Placeholder label="製麺所の外観／麺づくりの様子（メイン画像）" ratio="4 / 3" className="shadow-2xl" />
+
+          <div className="lg:col-span-6">
+            <div className="relative">
+              <Media
+                src="noodles-crate-straight.webp"
+                alt="有限会社幸住食品で製造した、木箱に並ぶ業務用の中華麺"
+                ratio="4 / 3"
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="shadow-2xl"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -71,7 +85,11 @@ export default function Home() {
       <section className="py-18 md:py-24">
         <div className="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <Reveal className="lg:col-span-6 order-2 lg:order-1">
-            <Placeholder label="製麺の工程／小麦粉・生地の写真" ratio="5 / 4" />
+            <Media
+              src="noodles-crate-wave.webp"
+              alt="木箱に整然と並べられた、製麺したての生麺"
+              ratio="5 / 4"
+            />
           </Reveal>
           <Reveal className="lg:col-span-6 order-1 lg:order-2" delay={100}>
             <SectionHeading en="About" title="東京・板橋区赤塚の製麺所として" />
@@ -105,7 +123,7 @@ export default function Home() {
       </section>
 
       {/* 3. 事業紹介 */}
-      <section className="py-18 md:py-24 bg-paper-200/60 bg-grid">
+      <section className="py-18 md:py-24 bg-paper-200/70 bg-grid">
         <div className="max-w-7xl mx-auto px-5 lg:px-8">
           <SectionHeading
             en="Business"
@@ -116,9 +134,24 @@ export default function Home() {
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {BUSINESS_CARDS.map((c, i) => (
               <Reveal key={c.href} delay={(i % 3) * 80}>
-                <LinkCard href={c.href} title={c.title} lead={c.lead} index={`0${i + 1}`} className="h-full" />
+                <LinkCard
+                  href={c.href}
+                  title={c.title}
+                  lead={c.lead}
+                  index={`0${i + 1}`}
+                  image={c.image}
+                  className="h-full"
+                />
               </Reveal>
             ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Link
+              href="/business"
+              className="inline-flex items-center gap-2 border border-navy-600 text-navy-800 px-8 py-3 text-sm tracking-wider hover:bg-navy-800 hover:text-paper-50 transition-colors"
+            >
+              事業紹介をすべて見る
+            </Link>
           </div>
         </div>
       </section>
@@ -136,7 +169,13 @@ export default function Home() {
               <Reveal key={p.slug} delay={(i % 3) * 80}>
                 <Link href={p.href} className="group block">
                   <div className="overflow-hidden border border-paper-300">
-                    <Placeholder label={`${p.short}用麺のイメージ`} ratio="4 / 3" />
+                    <Media
+                      src={p.image}
+                      alt={`${p.short}の${p.category === 'related' ? '関連商品' : '業務用麺'}イメージ`}
+                      fallbackLabel={p.short}
+                      ratio="4 / 3"
+                      className="transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
                   </div>
                   <div className="pt-4">
                     <div className="flex items-center gap-2">
@@ -169,7 +208,7 @@ export default function Home() {
       {/* 5. サンプル製麺 + 6. テストキッチン */}
       <section className="py-18 md:py-24 bg-navy-800 text-paper-50">
         <div className="max-w-7xl mx-auto px-5 lg:px-8 grid md:grid-cols-2 gap-8">
-          <Reveal className="flex flex-col border border-navy-600 p-8 md:p-10">
+          <Reveal className="flex flex-col border border-navy-600 bg-navy-900/40 p-8 md:p-10">
             <span className="font-en text-sm tracking-[0.25em] text-wheat-300 mb-3">Sample</span>
             <h2 className="font-heading text-2xl text-paper-50">サンプル製麺</h2>
             <p className="mt-4 text-sm leading-loose text-paper-200/90 flex-1">
@@ -187,7 +226,7 @@ export default function Home() {
               </svg>
             </Link>
           </Reveal>
-          <Reveal className="flex flex-col border border-navy-600 p-8 md:p-10" delay={100}>
+          <Reveal className="flex flex-col border border-navy-600 bg-navy-900/40 p-8 md:p-10" delay={100}>
             <span className="font-en text-sm tracking-[0.25em] text-wheat-300 mb-3">Test Kitchen</span>
             <h2 className="font-heading text-2xl text-paper-50">テストキッチン</h2>
             <p className="mt-4 text-sm leading-loose text-paper-200/90 flex-1">
@@ -235,7 +274,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. お問い合わせ導線 */}
+      {/* 8. お問い合わせ導線（CTAはここに） */}
       <CTASection />
 
       {/* FAQ */}
@@ -247,7 +286,7 @@ export default function Home() {
       </section>
 
       {/* 9. 会社情報 */}
-      <section className="py-18 md:py-24 bg-paper-200/60">
+      <section className="py-18 md:py-24 bg-paper-200/70">
         <div className="max-w-7xl mx-auto px-5 lg:px-8">
           <SectionHeading en="Company" title="会社情報・アクセス" className="mb-10" />
           <CompanyInfo />

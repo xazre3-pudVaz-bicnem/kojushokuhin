@@ -4,7 +4,7 @@ import { COMPANY, PHONE, PHONE_TEL } from '@/lib/constants'
 export default function CompanyInfo({ withMap = true }: { withMap?: boolean }) {
   const rows: [string, React.ReactNode][] = [
     ['会社名', COMPANY.name],
-    ['代表者', COMPANY.representative],
+    ['担当者', COMPANY.contactPerson],
     ['所在地', `〒${COMPANY.postalCode} ${COMPANY.address}`],
     [
       '電話番号',
@@ -13,7 +13,6 @@ export default function CompanyInfo({ withMap = true }: { withMap?: boolean }) {
       </a>,
     ],
     ['営業時間', COMPANY.hours],
-    ['定休日', COMPANY.holiday],
     ['事業内容', COMPANY.business],
   ]
 

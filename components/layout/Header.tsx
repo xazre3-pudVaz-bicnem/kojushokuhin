@@ -1,8 +1,9 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { NAV_ITEMS, PHONE, PHONE_TEL, SITE_NAME_SHORT } from '@/lib/constants'
+import { NAV_ITEMS, PHONE, PHONE_TEL, PHONE_NOTE, COMPANY } from '@/lib/constants'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -28,22 +29,32 @@ export default function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
         scrolled
           ? 'bg-paper-50/95 backdrop-blur-sm border-b border-paper-300 shadow-sm'
-          : 'bg-paper-50/80 backdrop-blur-sm border-b border-transparent'
+          : 'bg-paper-50/85 backdrop-blur-sm border-b border-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-5 lg:px-8 h-16 lg:h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-5 lg:px-8 h-16 lg:h-20 flex items-center justify-between gap-4">
         {/* Logo */}
-        <Link href="/" className="flex flex-col leading-none group shrink-0">
-          <span className="font-heading text-lg lg:text-xl tracking-wide text-navy-800 group-hover:text-enji-600 transition-colors">
-            有限会社{SITE_NAME_SHORT}
-          </span>
-          <span className="text-[10px] tracking-[0.25em] text-ink-500 mt-0.5">
-            東京・板橋区の製麺所
+        <Link href="/" className="flex items-center gap-2.5 group shrink-0">
+          <Image
+            src="/images/opt/logo.webp"
+            alt="有限会社幸住食品 ロゴ"
+            width={72}
+            height={66}
+            priority
+            className="w-10 h-10 lg:w-12 lg:h-12 object-contain"
+          />
+          <span className="flex flex-col leading-none">
+            <span className="font-heading text-base lg:text-lg tracking-wide text-navy-800 group-hover:text-enji-600 transition-colors">
+              有限会社幸住食品
+            </span>
+            <span className="text-[10px] tracking-[0.22em] text-ink-500 mt-1">
+              東京・板橋区の製麺所
+            </span>
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-7 text-sm">
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-6 text-sm">
           {NAV_ITEMS.map((item) => (
             <div
               key={item.label}
@@ -53,13 +64,13 @@ export default function Header() {
             >
               <Link
                 href={item.href}
-                className="text-ink-700 hover:text-enji-600 transition-colors py-2 tracking-wide"
+                className="text-ink-700 hover:text-enji-600 transition-colors py-2 tracking-wide whitespace-nowrap"
               >
                 {item.label}
               </Link>
               {'children' in item && openDropdown === item.label && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 pt-1">
-                  <div className="bg-paper-50 border border-paper-300 rounded-sm shadow-lg min-w-48 py-2">
+                  <div className="bg-paper-50 border border-paper-300 shadow-lg min-w-44 py-2">
                     {item.children.map((child) => (
                       <Link
                         key={child.href}
@@ -76,15 +87,18 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Desktop right: phone */}
-        <a
-          href={PHONE_TEL}
-          className="hidden lg:flex items-center gap-2 bg-navy-800 text-paper-50 text-sm px-5 py-2.5 tracking-wider hover:bg-enji-600 transition-colors"
-        >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-          </svg>
-          {PHONE}
+        {/* Desktop right: phone + note */}
+        <a href={PHONE_TEL} className="hidden lg:flex flex-col items-end shrink-0 group">
+          <span className="flex items-center gap-1.5 text-navy-800 group-hover:text-enji-600 transition-colors">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+            <span className="font-heading text-xl tracking-wide leading-none">{PHONE}</span>
+          </span>
+          <span className="text-[10px] text-ink-500 mt-1 hidden xl:block">
+            {PHONE_NOTE}
+          </span>
+          <span className="text-[10px] text-ink-500 mt-1 xl:hidden">受付 {COMPANY.hours}</span>
         </a>
 
         {/* Hamburger */}
@@ -131,20 +145,23 @@ export default function Header() {
                 )}
               </div>
             ))}
-            <Link href="/company" onClick={() => setMenuOpen(false)} className="py-3 text-navy-800 border-b border-paper-200 tracking-wide">
-              会社案内
-            </Link>
+
+            {/* Phone CTA in drawer */}
             <a
               href={PHONE_TEL}
               onClick={() => setMenuOpen(false)}
               className="mt-5 flex items-center justify-center gap-2 bg-navy-800 text-paper-50 py-3.5 tracking-wider"
             >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+              </svg>
               電話する（{PHONE}）
             </a>
+            <p className="mt-2 text-xs text-ink-500 text-center">{PHONE_NOTE}</p>
             <Link
               href="/contact"
               onClick={() => setMenuOpen(false)}
-              className="mt-2 block text-center bg-enji-500 text-paper-50 py-3.5 tracking-wider"
+              className="mt-3 block text-center bg-enji-500 text-paper-50 py-3.5 tracking-wider"
             >
               お問い合わせフォーム
             </Link>

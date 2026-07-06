@@ -7,7 +7,7 @@ import CompanyInfo from '@/components/ui/CompanyInfo'
 import { pageMeta } from '@/lib/seo'
 
 export const metadata: Metadata = pageMeta({
-  title: 'お問い合わせ｜業務用麺・オリジナル麺・サンプル製麺のご相談',
+  title: 'お問い合わせ｜業務用麺・オリジナル麺のご相談',
   description:
     '有限会社幸住食品へのお問い合わせ。業務用麺の相談、オリジナル麺の相談、サンプル製麺、テストキッチンのご利用など、お電話（03-3975-4147）またはフォームよりお気軽にご連絡ください。',
   path: '/contact',

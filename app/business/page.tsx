@@ -7,12 +7,12 @@ import CTASection from '@/components/ui/CTASection'
 import ProcessSteps from '@/components/ui/ProcessSteps'
 import FaqList from '@/components/ui/FaqList'
 import Reveal from '@/components/ui/Reveal'
-import Placeholder from '@/components/ui/Placeholder'
+import Media from '@/components/ui/Media'
 import { BUSINESS_CARDS, PRODUCTS, FAQS } from '@/lib/constants'
 import { pageMeta, faqSchema } from '@/lib/seo'
 
 export const metadata: Metadata = pageMeta({
-  title: '事業紹介｜業務用麺の製造・オリジナル麺開発',
+  title: '事業紹介｜業務用麺・サンプル製麺・テストキッチン',
   description:
     '有限会社幸住食品の事業紹介。業務用麺の製造、飲食店向けの麺づくり、食品メーカー・惣菜店・中華料理店向けの対応、サンプル製麺、テストキッチンまで。東京・板橋区の製麺所が麺づくりを一貫してお手伝いします。',
   path: '/business',
@@ -88,7 +88,13 @@ export default function BusinessPage() {
             {PRODUCTS.map((p) => (
               <Link key={p.slug} href={p.href} className="group block">
                 <div className="overflow-hidden border border-paper-300">
-                  <Placeholder label={`${p.short}`} ratio="1 / 1" />
+                  <Media
+                    src={p.image}
+                    alt={`${p.short}のイメージ`}
+                    fallbackLabel={p.short}
+                    ratio="1 / 1"
+                    className="transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
                 </div>
                 <p className="mt-2 text-sm text-center text-navy-800 group-hover:text-enji-600 transition-colors">
                   {p.short}

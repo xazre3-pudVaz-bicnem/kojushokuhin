@@ -5,7 +5,7 @@ import PageHero from '@/components/ui/PageHero'
 import SectionHeading from '@/components/ui/SectionHeading'
 import CTASection from '@/components/ui/CTASection'
 import Reveal from '@/components/ui/Reveal'
-import Placeholder from '@/components/ui/Placeholder'
+import Media from '@/components/ui/Media'
 import { PRODUCT_DETAILS, PRODUCT_SLUGS } from '@/lib/products'
 import { PRODUCTS } from '@/lib/constants'
 import { pageMeta } from '@/lib/seo'
@@ -34,6 +34,7 @@ export default async function ProductDetailPage({ params }: Params) {
   if (!p) notFound()
 
   const others = PRODUCTS.filter((x) => x.slug !== slug)
+  const prod = PRODUCTS.find((x) => x.slug === slug)
 
   return (
     <>
@@ -52,7 +53,13 @@ export default async function ProductDetailPage({ params }: Params) {
       <section className="py-18 md:py-24">
         <div className="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <Reveal className="lg:col-span-6">
-            <Placeholder label={p.imageLabel} ratio="5 / 4" />
+            <Media
+              src={prod?.image}
+              alt={p.imageLabel}
+              fallbackLabel={p.short}
+              ratio="5 / 4"
+              priority
+            />
           </Reveal>
           <Reveal className="lg:col-span-6" delay={100}>
             {p.category === 'related' && (
@@ -125,7 +132,13 @@ export default async function ProductDetailPage({ params }: Params) {
             {others.map((o) => (
               <Link key={o.slug} href={o.href} className="group block">
                 <div className="overflow-hidden border border-paper-300">
-                  <Placeholder label={o.short} ratio="4 / 3" />
+                  <Media
+                    src={o.image}
+                    alt={`${o.short}のイメージ`}
+                    fallbackLabel={o.short}
+                    ratio="4 / 3"
+                    className="transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
                 </div>
                 <p className="mt-2 text-sm text-center text-navy-800 group-hover:text-enji-600 transition-colors">
                   {o.short}

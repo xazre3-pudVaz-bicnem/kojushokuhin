@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { COMPANY, PHONE, PHONE_TEL, SITE_NAME, NAV_ITEMS, LANDING_PAGES } from '@/lib/constants'
 
 export default function Footer() {
@@ -8,19 +9,32 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 mb-12">
           {/* Brand + company */}
           <div className="md:col-span-4">
-            <p className="font-heading text-xl tracking-wide text-paper-50 mb-1">{SITE_NAME}</p>
-            <p className="text-[11px] tracking-[0.25em] text-wheat-300 mb-5">
-              東京・板橋区の製麺所
-            </p>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="inline-flex items-center justify-center w-12 h-12 bg-paper-50 rounded-full p-1.5 shrink-0">
+                <Image
+                  src="/images/opt/logo.webp"
+                  alt="有限会社幸住食品 ロゴ"
+                  width={72}
+                  height={66}
+                  className="w-full h-auto"
+                />
+              </span>
+              <div>
+                <p className="font-heading text-lg tracking-wide text-paper-50 leading-tight">{SITE_NAME}</p>
+                <p className="text-[11px] tracking-[0.2em] text-wheat-300">東京・板橋区の製麺所</p>
+              </div>
+            </div>
             <div className="text-sm text-paper-300/90 space-y-1.5 leading-relaxed">
               <p>〒{COMPANY.postalCode}</p>
               <p>{COMPANY.address}</p>
               <p>営業時間：{COMPANY.hours}</p>
-              <p>定休日：{COMPANY.holiday}</p>
               <p className="pt-2">
                 <a href={PHONE_TEL} className="text-paper-50 hover:text-wheat-300 transition-colors">
                   TEL {PHONE}
                 </a>
+              </p>
+              <p className="text-xs text-paper-300/70">
+                お電話の際は「ホームページを見た」とお伝えください
               </p>
             </div>
           </div>

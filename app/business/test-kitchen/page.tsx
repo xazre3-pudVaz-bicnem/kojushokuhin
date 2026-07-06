@@ -4,11 +4,11 @@ import PageHero from '@/components/ui/PageHero'
 import SectionHeading from '@/components/ui/SectionHeading'
 import CTASection from '@/components/ui/CTASection'
 import Reveal from '@/components/ui/Reveal'
-import Placeholder from '@/components/ui/Placeholder'
+import Media from '@/components/ui/Media'
 import { pageMeta } from '@/lib/seo'
 
 export const metadata: Metadata = pageMeta({
-  title: 'テストキッチン｜製麺した麺をその場で調理・試食・検証',
+  title: 'テストキッチン｜製麺した麺を調理・試食できる相談環境',
   description:
     '製麺所の横にOPEN予定のラーメン店を、製麺した麺を実際に調理・試食・検証できるテストキッチンとして貸出。新メニュー開発や試作品の確認、味の調整に。東京・板橋区の製麺所 有限会社幸住食品。',
   path: '/business/test-kitchen',
@@ -56,7 +56,7 @@ export default function TestKitchenPage() {
             </div>
           </Reveal>
           <Reveal className="lg:col-span-6" delay={100}>
-            <Placeholder label="ラーメン店（テストキッチン）の厨房・調理の様子" ratio="5 / 4" />
+            <Media src="noodles-crate-wave.webp" alt="テストキッチンで実際に調理・試食する、製麺したての自家製麺" ratio="5 / 4" />
           </Reveal>
         </div>
       </section>
